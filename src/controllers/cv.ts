@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from "express";
 
 import { generatePdf, getCVtemplate } from "../utils";
-import { RequestPayload } from "src/middlewares/types";
+import { RequestPayload } from "./types";
 
 const CVController = {
   async generateCv(

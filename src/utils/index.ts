@@ -26,7 +26,10 @@ export const getCVtemplate = <T>(data: T) => {
  *
  */
 export const generatePdf = async (html: string) => {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: ["--no-sandbox"],
+  });
   const page = await browser.newPage();
 
   await page.setContent(html);
@@ -64,7 +67,7 @@ export const validateAgainstRegex = (
     [ValidationType.ADDRESS]: addressRegex,
   };
 
-  const isValid = validationMap[type].test(data);
+  const isValid = validationMap[type].test(data.trim());
 
   return isValid;
 };
@@ -103,5 +106,7 @@ export const ValidateSchema = (payload: any) => {
     if (!validity) response[key] = `${key} is not valid`;
   });
 
-  return Object.keys(response).length > 0 ? response : undefined;
+  const errorResponses = Object.values(response).filter(Boolean);
+
+  return errorResponses.length > 0 ? response : undefined;
 };
