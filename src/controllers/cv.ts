@@ -2,10 +2,10 @@ import { Response, Request, NextFunction } from "express";
 import ejs from "ejs";
 import fs from "fs";
 import { join } from "path";
-import { generatePdf } from "src/utils";
+import { generatePdf } from "../utils";
 
 const cvTemplate = fs.readFileSync(
-  join(__dirname + "../../template/cv.ejs"),
+  join(__dirname + "../../../template/cv.ejs"),
   "utf-8"
 );
 

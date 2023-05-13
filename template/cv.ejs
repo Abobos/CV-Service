@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume - <%= first_name %> <%= last_name %></title>
+    <style>
+      body {
+        font-family: "Arial, Helvetica, sans-serif";
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 2px;
+      }
+      section {
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><%= first_name %> <%= last_name %></h1>
+
+      <ul>
+        <li><%= birth_date %></li>
+        <li><%= contacts.place %></li>
+      </ul>
+    </header>
+    <br />
+    <main>
+      <section>
+        <ul>
+          <li><%= contacts.phone %></li>
+          <li><%= contacts.email %></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Work Experience</h3>
+        <ul>
+          <% for(let i=0; i < experience.length; i++) { %>
+          <li>
+            <p><%= experience[i].title %> - <%= experience[i].company %></p>
+            <p>
+              <%= experience[i].start_date %> - <%= experience[i].end_date %>
+            </p>
+          </li>
+          <% } %>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

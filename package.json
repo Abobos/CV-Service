@@ -4,10 +4,11 @@
   "description": "Create CV file",
   "main": "app.ts",
   "scripts": {
-    "build": "tsc",
-    "start": "yarn build && node ./dist/server.js",
-    "dev": "nodemon -r tsconfig-paths/register ./src/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "build": "rm -rf dist && tsc",
+    "prestart": "yarn build",
+    "start": "node ./dist/server.js",
+    "dev": "nodemon  ./src/server.ts"
   },
   "author": "Blessing Makaraba",
   "license": "ISC",
@@ -24,7 +25,6 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.4"
   }
 }

@@ -12,7 +12,10 @@ export const generatePdf = async (html: string) => {
 
   await page.setContent(html);
 
-  const pdfStream = await page.createPDFStream({ format: "A4" });
+  const pdfStream = await page.createPDFStream({
+    format: "A4",
+    margin: { top: "1cm", bottom: "1cm", left: "1cm", right: "1cm" },
+  });
 
   return pdfStream;
 };
@@ -28,7 +31,7 @@ export const validateAgainstRegex = (
   data: string = "",
   type: ValidationType = ValidationType.ALPHABET
 ) => {
-  const alphabetRegex = /^[A-Z\.a-z]+$/;
+  const alphabetRegex = /^[a-zA-Z\s.-]+$/;
   const phoneNumberRegex = /^\+?\d{1,3}\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
   const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,7 +40,7 @@ export const validateAgainstRegex = (
   const validationMap = {
     [ValidationType.ALPHABET]: alphabetRegex,
     [ValidationType.PHONE_NUMBER]: phoneNumberRegex,
-    [ValidationType.DATE]: dateRegex,
+    [ValidationType.DATE]: data.includes("Present") ? alphabetRegex : dateRegex,
     [ValidationType.EMAIL]: emailRegex,
     [ValidationType.ADDRESS]: addressRegex,
   };
@@ -68,6 +71,10 @@ export const ValidateSchema = (payload: any) => {
       payload[key].forEach((data: any) => {
         response[key].push(ValidateSchema(data));
       });
+
+      const responses = response[key].filter((datum: any) => Boolean(datum));
+
+      if (responses.length === 0) response[key] = undefined;
 
       return;
     }

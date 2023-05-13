@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { validateAgainstRegex, ValidateSchema } from "src/utils";
-import { ValidationType } from "src/utils/types";
+import { validateAgainstRegex, ValidateSchema } from "../utils";
+import { ValidationType } from "../utils/types";
 import { RequestPayload } from "./types";
 
 export const validator = (
@@ -32,6 +32,7 @@ export const validator = (
 
   const errors = ValidateSchema(schema);
 
+  console.log({ errors });
   if (errors) {
     return res.status(422).json({
       code: "422",
