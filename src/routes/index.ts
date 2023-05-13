@@ -1,16 +1,16 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
 import CVController from "../controllers/cv";
 // import { validator } from "../middlewares";
 
 const router = Router();
 
-router.get("", (req, res) => {
+router.get("", (_req: Request, res: Response) => {
   res.send("Welcome to CV Service");
 });
 
 router.post("/cv", CVController.generateCv);
 
-router.all("*", (req, res) => {
+router.all("*", (_req: Request, res: Response) => {
   res.send("This route is unavailable");
 });
 

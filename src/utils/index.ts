@@ -1,5 +1,24 @@
 import puppeteer from "puppeteer";
 import { ValidationType } from "./types";
+import fs from "fs";
+import { join } from "path";
+import ejs from "ejs";
+
+/**
+ *
+ * @param data the data to render
+ *
+ */
+export const getCVtemplate = <T>(data: T) => {
+  const cvTemplate = fs.readFileSync(
+    join(__dirname + "../../../template/cv.ejs"),
+    "utf-8"
+  );
+
+  const html = ejs.render(cvTemplate, data);
+
+  return html;
+};
 
 /**
  *
