@@ -10,9 +10,9 @@ describe("CV Service", () => {
         last_name: "Smith",
         birth_date: "1988-02-14",
         contacts: {
-          place: "Berlin, Germany",
-          phone: "+4917012345678",
-          email: "john.smith@moberries.com",
+          place: "Sweden",
+          phone: "+4917012345628",
+          email: "john.smith@gmail.com",
         },
         experience: [
           {

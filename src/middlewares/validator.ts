@@ -34,7 +34,7 @@ export const validator = (
 
   if (errors) {
     return res.status(422).json({
-      code: "422",
+      status: "failed",
       message: "Validation Error",
       errors,
     });

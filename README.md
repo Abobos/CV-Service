@@ -35,3 +35,7 @@ There is one major integration test located in `src/test/cv.test.ts` that tests 
 ```
 yarn test
 ```
+
+#### API Docs
+
+[CV Service](https://cvservice.docs.apiary.io/#reference/0/cv-service-collection/generate-a-new-cv)
