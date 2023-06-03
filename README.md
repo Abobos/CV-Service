@@ -1,8 +1,8 @@
 ### CV Service
 
-A service that gives users the ability to generate PDFs by providing user data.
-Please note that this service currently uses a specific template for generating PDFs.
-The ability to create user-defined templates is not supported at this time.
+A service that gives users the ability to generate CV in PDF by providing user data.
+Please note that this service currently uses a specific template for generating CVs.
+The ability to create user-defined CV templates is not supported at this time.
 
 ### Development
 
